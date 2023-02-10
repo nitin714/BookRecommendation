@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+    li {
+        font-size: 20px;
+    }
+    
+    p {
+        font-size: 15px;
+    }
+    
+    .nav-title {
+        margin-left: 50px;
+        font-size: 28px;
+    }
+    
+    .navigation-bar {
+        height: 100px;
+    }
+    
+    img {
+        height: 240px;
+        width: auto;
+        max-width: 500px;
+    }
+</style>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navigation-bar navbar-dark bg-primary">
+        <a class="navbar-brand nav-title">Book Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a class="nav-link" href="/">Home</a></li>
+            <li><a class="nav-link" href="/recommend">Recommend</a></li>
+            <li><a class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="margin:15px 0 0 20px;">
+                <p style="font-size:40px">Recommend Books</p>
+                <form action="/recommend_books" method="post">
+                    <input name="user_input" type="text" class="form-control"><br>
+                    <input type="submit" class="btn btn-outline-primary">
+                </form>
+            </div>
+
+            {% if data %} {% for i in data %}
+            <div class="col-md-2" style="margin:20px; padding: 0px 15px">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img-top" src="{{i[2]}}" alt="image url have http">
+                        <p>{{i[0]}}</p>
+                        <p>{{i[1]}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
